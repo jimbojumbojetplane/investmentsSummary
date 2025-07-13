@@ -55,10 +55,8 @@ def show_login_form():
             max-width: 450px;
             margin: 2rem auto;
             padding: 2rem;
-            border-radius: 0.5rem;
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: transparent;
+            border: none;
         }
         .login-header {
             text-align: center;
@@ -78,41 +76,23 @@ def show_login_form():
     </style>
     """, unsafe_allow_html=True)
     
-    # Portfolio-themed visual
+    # Portfolio header image banner
     st.markdown("""
-    <div class="portfolio-icon">
-        <div style="font-size: 4rem; margin-bottom: 0.5rem;">📊</div>
-        <div style="font-size: 2rem; margin-bottom: 1rem;">📈 💰 🏦</div>
-        <svg width="200" height="120" style="display: block; margin: 0 auto;">
-            <!-- Portfolio Chart Background -->
-            <rect width="200" height="120" fill="#f8f9fa" stroke="#e9ecef" stroke-width="1" rx="8"/>
-            
-            <!-- Chart Grid Lines -->
-            <line x1="20" y1="20" x2="20" y2="100" stroke="#ddd" stroke-width="1"/>
-            <line x1="20" y1="100" x2="180" y2="100" stroke="#ddd" stroke-width="1"/>
-            
-            <!-- Rising Portfolio Line -->
-            <polyline points="20,90 40,85 60,75 80,70 100,60 120,55 140,45 160,35 180,25" 
-                      fill="none" stroke="#28a745" stroke-width="3"/>
-            
-            <!-- Data Points -->
-            <circle cx="40" cy="85" r="3" fill="#28a745"/>
-            <circle cx="80" cy="70" r="3" fill="#28a745"/>
-            <circle cx="120" cy="55" r="3" fill="#28a745"/>
-            <circle cx="160" cy="35" r="3" fill="#28a745"/>
-            
-            <!-- Dollar Sign -->
-            <text x="185" y="30" font-family="Arial" font-size="16" fill="#28a745" font-weight="bold">$</text>
-            
-            <!-- Title -->
-            <text x="100" y="15" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">Portfolio Growth</text>
-        </svg>
+    <div style="
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 3rem 0;
+        margin: -1rem -1rem 3rem -1rem;
+        text-align: center;
+        color: white;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    ">
+        <div style="font-size: 4rem; margin-bottom: 1rem;">📊 📈 💰</div>
+        <h1 style="margin: 0; font-size: 2.5rem; font-weight: bold;">RBC Portfolio Dashboard</h1>
+        <p style="margin: 0.5rem 0 0 0; font-size: 1.2rem; opacity: 0.9;">Secure Investment Portfolio Access</p>
     </div>
     """, unsafe_allow_html=True)
     
     st.markdown('<div class="login-form">', unsafe_allow_html=True)
-    st.markdown('<h2 class="login-header">🔐 RBC Portfolio Dashboard</h2>', unsafe_allow_html=True)
-    st.markdown('<p class="login-subtitle">Secure access to your investment portfolio</p>', unsafe_allow_html=True)
     
     with st.form("login_form"):
         username = st.text_input("Username")
