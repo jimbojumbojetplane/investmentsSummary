@@ -36,6 +36,18 @@ def hash_password(password):
 
 def verify_password(username, password):
     """Verify username and password"""
+    # Debug info for Railway
+    if os.getenv("ENVIRONMENT") == "development":
+        st.write(f"Debug - USERS dict: {USERS}")
+        st.write(f"Debug - Looking for username: {repr(username)}")
+        st.write(f"Debug - Username in USERS: {username in USERS}")
+        if username in USERS:
+            generated_hash = hash_password(password)
+            stored_hash = USERS[username]
+            st.write(f"Debug - Generated hash: {generated_hash}")
+            st.write(f"Debug - Stored hash: {stored_hash}")
+            st.write(f"Debug - Hashes match: {generated_hash == stored_hash}")
+    
     if username not in USERS:
         return False
     password_hash = hash_password(password)
