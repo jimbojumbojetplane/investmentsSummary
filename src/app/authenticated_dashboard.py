@@ -16,10 +16,19 @@ st.set_page_config(
 )
 
 # Authentication configuration
-USERS = {
-    os.getenv("USER1_USERNAME", "admin"): os.getenv("USER1_PASSWORD_HASH"),
-    os.getenv("USER2_USERNAME", "viewer"): os.getenv("USER2_PASSWORD_HASH"),
-}
+USERS = {}
+
+# Add User 1 (Admin) if environment variables are set
+user1_name = os.getenv("USER1_USERNAME", "admin")
+user1_hash = os.getenv("USER1_PASSWORD_HASH", "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9")  # default: admin123
+if user1_name and user1_hash:
+    USERS[user1_name] = user1_hash
+
+# Add User 2 (Viewer) if environment variables are set  
+user2_name = os.getenv("USER2_USERNAME")
+user2_hash = os.getenv("USER2_PASSWORD_HASH")
+if user2_name and user2_hash:
+    USERS[user2_name] = user2_hash
 
 def hash_password(password):
     """Hash password for secure storage"""
