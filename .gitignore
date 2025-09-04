@@ -53,9 +53,11 @@ downloads/*.csv
 downloads/*.xlsx
 downloads/*.pdf
 downloads/backups/
-data/
+data/input/
 *.csv
-*.json
+
+# Allow sample data for deployment
+!data/output/holdings_combined_04092025.json
 
 # Streamlit secrets (will be configured in deployment)
 .streamlit/secrets.toml
