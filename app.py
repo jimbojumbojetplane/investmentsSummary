@@ -6,6 +6,8 @@ import plotly.express as px
 from src.core.data_manager import DataManager
 import hashlib
 
+# Force refresh for benefits integration - Updated Sept 4, 2025
+
 # Set page config
 st.set_page_config(
     page_title="RBC Portfolio Dashboard",
@@ -60,7 +62,7 @@ def check_password():
     return False
 
 @st.cache_data
-def load_data():
+def load_data(cache_buster=None):
     """Load the most recent JSON data file using DataManager."""
     dm = DataManager()
     
@@ -326,8 +328,9 @@ def main():
     if not check_password():
         st.stop()
     
-    # Load data
-    df, data_file, dm = load_data()
+    # Load data with cache buster to ensure fresh data
+    cache_buster = datetime.now().strftime("%Y%m%d_%H")  # Updates hourly
+    df, data_file, dm = load_data(cache_buster)
     
     if df is None:
         st.stop()
