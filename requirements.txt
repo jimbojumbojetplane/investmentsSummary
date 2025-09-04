@@ -3,9 +3,13 @@ streamlit>=1.28.0
 pandas>=2.0.0
 plotly>=5.15.0
 
+# Benefits automation dependencies (optional - only needed if running benefits extractor locally)
+selenium>=4.25.0
+webdriver-manager>=4.0.2
+python-dotenv>=1.0.0
+
 # Existing dependencies (for RBC automation - not needed for dashboard)
 # playwright==1.40.0
-# python-dotenv==1.0.0
 # pytest==7.4.3
 # pytest-asyncio==0.21.1
 # beautifulsoup4==4.12.2
