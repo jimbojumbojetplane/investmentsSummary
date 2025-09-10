@@ -136,8 +136,8 @@ def push_to_github():
             print("ℹ️  No changes to commit - data is already up to date")
             return True
         
-        # Add the updated holdings file
-        subprocess.run(['git', 'add', 'data/output/holdings_combined_*.json'], 
+        # Add the updated holdings file and any relevant app changes
+        subprocess.run(['git', 'add', 'data/output/holdings_combined_*.json', 'app.py', 'src/'], 
                       cwd=PROJECT_ROOT, check=True)
         
         # Create commit message
