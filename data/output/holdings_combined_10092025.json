@@ -1,77 +1,5 @@
 [
   {
-    "type": "current_holdings",
-    "data": {
-      "Account #": "BENEFITS01",
-      "Product": "DC Pension Plan",
-      "Symbol": "DC-PENSION",
-      "Name": "BELL DEFINED CONTRIBUTION PENSION PLAN",
-      "Quantity": 1,
-      "Last Price": 667887.17,
-      "Currency": "CAD",
-      "Change $": 0,
-      "Change %": "N/A",
-      "Total Book Cost": 667887.17,
-      "Total Market Value": 667887.17,
-      "Unrealized Gain/Loss $": 0,
-      "Unrealized Gain/Loss %": "N/A",
-      "Average Cost": 667887.17,
-      "Annual Dividend Amount $": null,
-      "Dividend Ex Date": "",
-      "Load Type": "",
-      "RSP Eligibility": "",
-      "Automatic Investment Plan": "",
-      "DRIP Eligibility": "",
-      "Coupon Rate": null,
-      "Maturity Date": null,
-      "Expiration Date": null,
-      "Open Interest": null
-    }
-  },
-  {
-    "type": "current_holdings",
-    "data": {
-      "Account #": "BENEFITS02",
-      "Product": "RRSP",
-      "Symbol": "RRSP-BELL",
-      "Name": "BELL REGISTERED RETIREMENT SAVINGS PLAN",
-      "Quantity": 1,
-      "Last Price": 413539.01,
-      "Currency": "CAD",
-      "Change $": 0,
-      "Change %": "N/A",
-      "Total Book Cost": 413539.01,
-      "Total Market Value": 413539.01,
-      "Unrealized Gain/Loss $": 0,
-      "Unrealized Gain/Loss %": "N/A",
-      "Average Cost": 413539.01,
-      "Annual Dividend Amount $": null,
-      "Dividend Ex Date": "",
-      "Load Type": "",
-      "RSP Eligibility": "Yes",
-      "Automatic Investment Plan": "",
-      "DRIP Eligibility": "",
-      "Coupon Rate": null,
-      "Maturity Date": null,
-      "Expiration Date": null,
-      "Open Interest": null
-    }
-  },
-  {
-    "type": "financial_summary",
-    "data": {
-      "Account #": "BENEFITS",
-      "Currency": "CAD",
-      "Cash": "0.00",
-      "Investments": "1081426.18",
-      "Total": "1081426.18",
-      "Exchange Rate to CAD": "1",
-      "Cash (CAD)": 0.0,
-      "Investments (CAD)": 1081426.18,
-      "Total (CAD)": 1081426.18
-    }
-  },
-  {
     "type": "financial_summary",
     "data": {
       "Account #": "49813791",
@@ -125,7 +53,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -154,7 +84,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -183,7 +115,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -212,7 +146,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -241,7 +177,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -270,7 +208,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -299,7 +239,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -328,7 +270,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -357,7 +301,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": "Canada",
+      "ETF_Type": "Dividend Equity"
     }
   },
   {
@@ -386,7 +332,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": "Global",
+      "ETF_Type": "Bond/Fixed Income"
     }
   },
   {
@@ -415,7 +363,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": "US",
+      "ETF_Type": "Bond/Fixed Income"
     }
   },
   {
@@ -444,7 +394,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": "Global",
+      "ETF_Type": "Bond/Fixed Income"
     }
   },
   {
@@ -473,7 +425,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": "Canada",
+      "ETF_Type": "REIT"
     }
   },
   {
@@ -502,7 +456,9 @@
       "Coupon Rate": 7.85,
       "Maturity Date": "Apr 2, 2031",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -531,7 +487,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -560,7 +518,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -589,7 +549,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -618,7 +580,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -647,7 +611,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -676,7 +642,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -705,7 +673,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -734,7 +704,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -763,7 +735,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -792,7 +766,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -821,7 +797,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -850,7 +828,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -879,7 +859,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -908,7 +890,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -937,7 +921,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -966,7 +952,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -995,7 +983,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -1024,7 +1014,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -1053,7 +1045,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -1082,7 +1076,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -1111,7 +1107,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -1140,7 +1138,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -1169,7 +1169,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": "US",
+      "ETF_Type": "Bond/Fixed Income"
     }
   },
   {
@@ -1198,7 +1200,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": "US",
+      "ETF_Type": "Bond/Fixed Income"
     }
   },
   {
@@ -1227,7 +1231,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": "Europe",
+      "ETF_Type": "Broad Market Index"
     }
   },
   {
@@ -1256,7 +1262,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": "US",
+      "ETF_Type": "Sector/Theme"
     }
   },
   {
@@ -1285,7 +1293,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": "US",
+      "ETF_Type": "Sector/Theme"
     }
   },
   {
@@ -1328,7 +1338,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": "Global",
+      "ETF_Type": "Bond/Fixed Income"
     }
   },
   {
@@ -1385,7 +1397,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": "Europe",
+      "ETF_Type": "Broad Market Index"
     }
   },
   {
@@ -1414,7 +1428,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -1443,7 +1459,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -1472,7 +1490,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -1501,7 +1521,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -1530,7 +1552,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -1559,7 +1583,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -1588,7 +1614,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": null,
+      "ETF_Type": null
     }
   },
   {
@@ -1631,7 +1659,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": "Canada",
+      "ETF_Type": "Dividend Equity"
     }
   },
   {
@@ -1688,7 +1718,9 @@
       "Coupon Rate": null,
       "Maturity Date": "",
       "Expiration Date": "",
-      "Open Interest": null
+      "Open Interest": null,
+      "ETF_Region": "US",
+      "ETF_Type": "Dividend Equity"
     }
   }
 ]
