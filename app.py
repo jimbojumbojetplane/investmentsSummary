@@ -262,6 +262,98 @@ def create_quarterly_dividend_schedule(df):
         hide_index=True
     )
 
+def create_etf_category_breakdown(df):
+    """Create ETF/ETN category breakdown by region and type."""
+    
+    if df is None or df.empty:
+        return
+    
+    # Check if ETF classification columns exist
+    if 'ETF_Region' not in df.columns or 'ETF_Type' not in df.columns:
+        return
+    
+    # Filter for ETF/ETN holdings only
+    etf_holdings = df[df['Asset Type'].str.contains('ETF|ETN', case=False, na=False)]
+    
+    if etf_holdings.empty:
+        return
+    
+    st.subheader("🏷️ Holdings by ETF/ETN Categories")
+    
+    # Create two columns for region and type breakdowns
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.write("**By Geographic Region:**")
+        
+        # Group by region and calculate totals
+        region_breakdown = etf_holdings.groupby('ETF_Region').agg({
+            'Market Value': 'sum',
+            'Symbol': 'count'
+        }).reset_index()
+        region_breakdown.columns = ['Region', 'Total Value', 'Count']
+        region_breakdown = region_breakdown.sort_values('Total Value', ascending=False)
+        
+        # Create region pie chart
+        if not region_breakdown.empty:
+            fig_region = px.pie(
+                region_breakdown, 
+                values='Total Value', 
+                names='Region',
+                title="ETF/ETN Holdings by Region",
+                color_discrete_sequence=px.colors.qualitative.Set3
+            )
+            fig_region.update_traces(textposition='inside', textinfo='percent+label')
+            st.plotly_chart(fig_region, use_container_width=True)
+            
+            # Show region summary table
+            st.write("**Region Summary:**")
+            region_display = region_breakdown.copy()
+            region_display['Total Value'] = region_display['Total Value'].apply(lambda x: f"${x:,.2f}")
+            region_display.columns = ['Region', 'Total Value', 'Holdings Count']
+            st.dataframe(region_display, use_container_width=True, hide_index=True)
+    
+    with col2:
+        st.write("**By ETF/ETN Type:**")
+        
+        # Group by type and calculate totals
+        type_breakdown = etf_holdings.groupby('ETF_Type').agg({
+            'Market Value': 'sum',
+            'Symbol': 'count'
+        }).reset_index()
+        type_breakdown.columns = ['Type', 'Total Value', 'Count']
+        type_breakdown = type_breakdown.sort_values('Total Value', ascending=False)
+        
+        # Create type pie chart
+        if not type_breakdown.empty:
+            fig_type = px.pie(
+                type_breakdown, 
+                values='Total Value', 
+                names='Type',
+                title="ETF/ETN Holdings by Type",
+                color_discrete_sequence=px.colors.qualitative.Pastel
+            )
+            fig_type.update_traces(textposition='inside', textinfo='percent+label')
+            st.plotly_chart(fig_type, use_container_width=True)
+            
+            # Show type summary table
+            st.write("**Type Summary:**")
+            type_display = type_breakdown.copy()
+            type_display['Total Value'] = type_display['Total Value'].apply(lambda x: f"${x:,.2f}")
+            type_display.columns = ['Type', 'Total Value', 'Holdings Count']
+            st.dataframe(type_display, use_container_width=True, hide_index=True)
+    
+    # Detailed ETF/ETN holdings table
+    st.write("**Detailed ETF/ETN Holdings:**")
+    etf_display = etf_holdings[['Symbol', 'Description', 'ETF_Region', 'ETF_Type', 'Market Value', 'Account']].copy()
+    etf_display['Market Value'] = etf_display['Market Value'].apply(lambda x: f"${x:,.2f}")
+    etf_display.columns = ['Symbol', 'Description', 'Region', 'Type', 'Market Value', 'Account']
+    
+    # Sort by market value descending
+    etf_display = etf_display.sort_values('Market Value', ascending=False, key=lambda x: x.str.replace('$', '').str.replace(',', '').astype(float))
+    
+    st.dataframe(etf_display, use_container_width=True, hide_index=True)
+
 def create_account_summary_table(df, dm):
     """Create detailed account summary table."""
     if df is None or df.empty or 'Account' not in df.columns:
@@ -356,6 +448,9 @@ def main():
     # Charts
     st.subheader("📈 Portfolio Visualizations")
     create_portfolio_charts(df, dm)
+    
+    # ETF/ETN Category Breakdown
+    create_etf_category_breakdown(df)
     
     # Account summary table
     create_account_summary_table(df, dm)
