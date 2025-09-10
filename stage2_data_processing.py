@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Complete RBC + Benefits Portfolio Workflow
-Automates the full process of collecting RBC account data and benefits data,
-then integrates everything into a unified portfolio dashboard.
+Stage 2: Data Processing and Dashboard Update
+Processes CSV files from Stage 1, integrates benefits data, and updates the dashboard
+This stage handles all data processing and GitHub updates
 """
 
 import os
@@ -20,64 +20,44 @@ sys.path.append(str(PROJECT_ROOT / "src"))
 from src.extractors.direct_csv_parser import process_csv_files
 from src.extractors.benefits_extractor import BenefitsExtractor
 from src.extractors.benefits_integrator import integrate_benefits_data
-from src.mcp_rbc_automation import MCPRBCHoldingsDownloader
 
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler(PROJECT_ROOT / "data" / "complete_workflow.log"),
+        logging.FileHandler(PROJECT_ROOT / "data" / "stage2_data_processing.log"),
         logging.StreamHandler()
     ]
 )
 logger = logging.getLogger(__name__)
 
-def run_rbc_automation():
-    """Step 1: Run MCP-based RBC account data collection"""
-    print("🏦 Step 1: MCP-Based RBC Account Data Collection")
-    print("=" * 50)
+def check_input_files():
+    """Check if CSV files are available from Stage 1"""
+    input_dir = PROJECT_ROOT / "data" / "input" / "downloaded_files"
     
-    try:
-        print("🤖 Starting MCP-based RBC automation...")
-        print("📋 This will use Cursor agent and MCP tools for data collection")
-        
-        # Create MCP downloader instance
-        mcp_downloader = MCPRBCHoldingsDownloader()
-        
-        # Run the MCP automation
-        success = mcp_downloader.run_mcp_automation()
-        
-        if success:
-            # Get downloaded files
-            downloaded_files = mcp_downloader.get_downloaded_files()
-            
-            # Verify downloads
-            verification = mcp_downloader.verify_downloads()
-            
-            print("✅ MCP RBC data collection completed successfully")
-            print(f"📁 Downloaded {len(downloaded_files)} files")
-            
-            if verification["success"]:
-                print("✅ All expected accounts downloaded successfully")
-            else:
-                print(f"⚠️ Missing accounts: {verification['missing_accounts']}")
-            
-            logger.info("MCP RBC automation completed successfully")
-            return True
-        else:
-            print("❌ MCP RBC data collection failed")
-            logger.error("MCP RBC automation failed")
-            return False
-            
-    except Exception as e:
-        print(f"❌ Error running MCP RBC automation: {e}")
-        logger.error(f"MCP RBC automation error: {e}")
+    if not input_dir.exists():
+        logger.error(f"Input directory not found: {input_dir}")
         return False
+    
+    csv_files = list(input_dir.glob("*.csv"))
+    
+    if not csv_files:
+        logger.error("No CSV files found in input directory")
+        print("❌ No CSV files found in data/input/downloaded_files/")
+        print("💡 Run Stage 1 first: python3 stage1_mcp_data_collection.py")
+        return False
+    
+    logger.info(f"Found {len(csv_files)} CSV files in input directory")
+    print(f"✅ Found {len(csv_files)} CSV files from Stage 1:")
+    for csv_file in csv_files:
+        print(f"   📄 {csv_file.name}")
+    
+    return True
 
 def process_rbc_data():
-    """Step 2: Process RBC CSV files into JSON"""
-    print("\n📊 Step 2: Processing RBC Data")
+    """Step 1: Process RBC CSV files into JSON"""
+    print("\n📊 Step 1: Processing RBC Data")
     print("=" * 50)
     
     try:
@@ -91,8 +71,8 @@ def process_rbc_data():
         return False
 
 def run_benefits_automation():
-    """Step 3: Run Benefits portal data collection"""
-    print("\n🏢 Step 3: Benefits Portal Data Collection")
+    """Step 2: Run Benefits portal data collection (optional)"""
+    print("\n🏢 Step 2: Benefits Portal Data Collection (Optional)")
     print("=" * 50)
     
     try:
@@ -103,6 +83,7 @@ def run_benefits_automation():
             logger.warning("Benefits credentials not configured, skipping")
             return False
         
+        print("🤖 Starting benefits data extraction...")
         extractor = BenefitsExtractor(headless=True)
         result = extractor.extract_benefits_complete()
         
@@ -122,8 +103,8 @@ def run_benefits_automation():
         return False
 
 def integrate_all_data():
-    """Step 4: Integrate benefits data into holdings"""
-    print("\n🔗 Step 4: Integrating All Data")
+    """Step 3: Integrate benefits data into holdings"""
+    print("\n🔗 Step 3: Integrating All Data")
     print("=" * 50)
     
     try:
@@ -141,44 +122,9 @@ def integrate_all_data():
         logger.error(f"Data integration error: {e}")
         return False
 
-def check_environment():
-    """Check if environment is properly configured"""
-    print("🔍 Environment Check")
-    print("=" * 50)
-    
-    # Check .env file
-    env_file = PROJECT_ROOT / ".env"
-    if not env_file.exists():
-        print("⚠️  No .env file found. Creating template...")
-        env_template = """# RBC Automation Configuration
-RBC_USERNAME=your_rbc_username
-RBC_PASSWORD=your_rbc_password
-
-# Benefits Portal Configuration
-BENEFITS_USERNAME=your_benefits_username
-BENEFITS_PASSWORD=your_benefits_password
-"""
-        with open(env_file, 'w') as f:
-            f.write(env_template)
-        print(f"📝 Created .env template at {env_file}")
-        print("Please edit this file with your credentials")
-        return False
-    
-    # Check directories
-    required_dirs = [
-        PROJECT_ROOT / "data" / "input" / "downloaded_files",
-        PROJECT_ROOT / "data" / "output"
-    ]
-    
-    for dir_path in required_dirs:
-        dir_path.mkdir(parents=True, exist_ok=True)
-    
-    print("✅ Environment check completed")
-    return True
-
 def push_to_github():
-    """Step 5: Push updated data to GitHub"""
-    print("\n📤 Step 5: Pushing to GitHub")
+    """Step 4: Push updated data to GitHub"""
+    print("\n📤 Step 4: Pushing to GitHub")
     print("=" * 50)
     
     try:
@@ -198,13 +144,14 @@ def push_to_github():
         commit_msg = f"""Update portfolio data - {datetime.now().strftime('%Y-%m-%d %H:%M')}
 
 Automated update includes:
-- RBC holdings and financial summaries
+- RBC holdings via MCP automation (Stage 1)
+- Data processing and integration (Stage 2)
 - Bell Benefits integration (DC Pension + RRSP)
-- Complete portfolio value: Updated via automation
+- Complete portfolio value: Updated via two-stage workflow
 
-🤖 Generated with [Claude Code](https://claude.ai/code)
+🤖 Generated with MCP + Cursor Agent (Stage 1) + Python Processing (Stage 2)
 
-Co-Authored-By: Claude <noreply@anthropic.com>"""
+Co-Authored-By: MCP Automation <mcp@cursor.ai>"""
         
         # Commit changes
         subprocess.run(['git', 'commit', '-m', commit_msg], 
@@ -226,36 +173,48 @@ Co-Authored-By: Claude <noreply@anthropic.com>"""
         logger.error(f"GitHub push error: {e}")
         return False
 
+def show_dashboard_info():
+    """Show information about accessing the updated dashboard"""
+    print("\n🌐 Dashboard Access")
+    print("=" * 50)
+    
+    # Check if we have the final data file
+    data_dir = PROJECT_ROOT / "data" / "output"
+    json_files = list(data_dir.glob("holdings_combined_*.json"))
+    
+    if json_files:
+        latest_file = max(json_files, key=lambda x: x.stat().st_mtime)
+        print(f"📄 Latest data file: {latest_file.name}")
+        print(f"📅 Last updated: {datetime.fromtimestamp(latest_file.stat().st_mtime).strftime('%Y-%m-%d %H:%M:%S')}")
+    
+    print("\n🚀 To view your updated portfolio:")
+    print("   streamlit run app.py")
+    print("\n💡 The dashboard will automatically load the latest data file")
+
 def main():
-    """Main workflow orchestrator"""
-    print("🚀 RBC + Benefits Complete Portfolio Workflow")
+    """Main function for Stage 2: Data Processing and Dashboard Update"""
+    print("🚀 Stage 2: Data Processing and Dashboard Update")
     print("=" * 60)
     print(f"Started at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print()
     
-    # Check environment
-    if not check_environment():
-        print("❌ Environment check failed. Please configure your .env file.")
+    # Check if input files are available
+    if not check_input_files():
         return False
     
-    print()
     success_count = 0
-    total_steps = 5
+    total_steps = 4
     
-    # Step 1: RBC Data Collection
-    if run_rbc_automation():
-        success_count += 1
-    
-    # Step 2: Process RBC Data
+    # Step 1: Process RBC Data
     if process_rbc_data():
         success_count += 1
     
-    # Step 3: Benefits Data Collection (optional)
+    # Step 2: Benefits Data Collection (optional)
     benefits_success = run_benefits_automation()
     if benefits_success:
         success_count += 1
     
-    # Step 4: Integrate Data (only if we have benefits data)
+    # Step 3: Integrate Data (only if we have benefits data)
     integration_success = False
     if benefits_success and integrate_all_data():
         success_count += 1
@@ -264,32 +223,27 @@ def main():
         # If no benefits, still count RBC processing as complete
         success_count += 1
         integration_success = True
-        print("\n🔗 Step 4: Data Integration")
+        print("\n🔗 Step 3: Data Integration")
         print("=" * 50)
         print("⚠️  No benefits data to integrate, RBC data is ready for dashboard")
     
-    # Step 5: Push to GitHub (if data processing was successful)
+    # Step 4: Push to GitHub (if data processing was successful)
     if integration_success and push_to_github():
         success_count += 1
     
-    print(f"\n📊 Workflow Summary")
+    print(f"\n📊 Stage 2 Summary")
     print("=" * 60)
     print(f"Completed: {success_count}/{total_steps} steps")
     
-    if success_count >= 3:  # At least RBC processing, data integration, and optionally GitHub push
-        print("✅ Workflow completed successfully!")
+    if success_count >= 2:  # At least RBC processing and data integration
+        print("✅ Stage 2 completed successfully!")
         print("🎯 Your portfolio data is ready for the dashboard")
         
-        # Check if we have the final data file
-        data_dir = PROJECT_ROOT / "data" / "output"
-        json_files = list(data_dir.glob("holdings_combined_*.json"))
-        if json_files:
-            latest_file = max(json_files, key=lambda x: x.stat().st_mtime)
-            print(f"📄 Data file: {latest_file.name}")
+        show_dashboard_info()
         
         return True
     else:
-        print("❌ Workflow failed - insufficient steps completed")
+        print("❌ Stage 2 failed - insufficient steps completed")
         return False
 
 if __name__ == "__main__":

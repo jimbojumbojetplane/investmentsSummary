@@ -328,8 +328,16 @@ def main():
     if not check_password():
         st.stop()
     
-    # Load data with cache buster to ensure fresh data
-    cache_buster = datetime.now().strftime("%Y%m%d_%H")  # Updates hourly
+    # Load data with cache buster based on file modification time
+    dm = DataManager()
+    latest_file = dm.get_latest_data_file()
+    if latest_file and os.path.exists(latest_file):
+        # Use file modification time as cache buster
+        file_mtime = os.path.getmtime(latest_file)
+        cache_buster = str(file_mtime)
+    else:
+        cache_buster = datetime.now().strftime("%Y%m%d_%H%M%S")
+    
     df, data_file, dm = load_data(cache_buster)
     
     if df is None:
@@ -337,7 +345,13 @@ def main():
     
     # Show data source info
     if data_file:
-        st.info(f"Data loaded from: {os.path.basename(data_file)}")
+        col1, col2 = st.columns([3, 1])
+        with col1:
+            st.info(f"Data loaded from: {os.path.basename(data_file)}")
+        with col2:
+            if st.button("🔄 Refresh", help="Clear cache and reload latest data"):
+                st.cache_data.clear()
+                st.rerun()
     
     # Summary metrics
     st.subheader("📊 Portfolio Summary")

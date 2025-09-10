@@ -20,7 +20,7 @@ def sanitize_filename(base_name: str = "") -> str:
 def save_data(data: List[List[str]], filename: str, format: str = 'csv') -> str:
     """Save data to file in specified format."""
     try:
-        file_path = config.download_path / filename
+        file_path = config.data_input_dir / filename
         
         if format.lower() == 'csv':
             with open(file_path, 'w', newline='', encoding='utf-8') as csvfile:
@@ -128,7 +128,7 @@ def create_summary_report(downloaded_files: List[str]) -> str:
                 report_data['files'].append(file_info)
         
         report_filename = f"export_summary_{sanitize_filename()}.json"
-        report_path = config.download_path / report_filename
+        report_path = config.data_output_dir / report_filename
         
         with open(report_path, 'w', encoding='utf-8') as f:
             json.dump(report_data, f, indent=2, ensure_ascii=False)
@@ -143,10 +143,10 @@ def create_summary_report(downloaded_files: List[str]) -> str:
 def backup_existing_files() -> None:
     """Backup existing files in download directory."""
     try:
-        backup_dir = config.download_path / 'backups' / sanitize_filename()
+        backup_dir = config.data_input_dir / 'backups' / sanitize_filename()
         backup_dir.mkdir(parents=True, exist_ok=True)
         
-        for file_path in config.download_path.glob('*.csv'):
+        for file_path in config.data_input_dir.glob('*.csv'):
             if file_path.is_file():
                 backup_path = backup_dir / file_path.name
                 file_path.rename(backup_path)
@@ -167,7 +167,7 @@ def get_download_stats() -> Dict[str, Any]:
             'newest_file': None
         }
         
-        files = list(config.download_path.glob('*.csv'))
+        files = list(config.data_input_dir.glob('*.csv'))
         stats['total_files'] = len(files)
         
         if files:

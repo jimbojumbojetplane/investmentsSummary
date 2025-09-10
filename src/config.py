@@ -5,31 +5,32 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Config:
-    """Configuration class for RBC Direct Investing automation."""
+    """Configuration class for RBC Portfolio Management system."""
     
     def __init__(self):
-        self.username = os.getenv('RBC_USERNAME')
-        self.password = os.getenv('RBC_PASSWORD')
-        
-        self.base_url = 'https://secure.royalbank.com'
-        self.login_url = 'https://secure.royalbank.com/statics/login-service-ui/index#/full/signin?LANGUAGE=ENGLISH'
-        
-        self.download_path = Path(__file__).parent.parent / 'downloads'
-        self.download_path.mkdir(exist_ok=True)
-        
-        self.browser_config = {
-            'headless': os.getenv('HEADLESS', 'False').lower() == 'true',
-            'timeout': int(os.getenv('TIMEOUT', '30000')),
-            'viewport': {'width': 2560, 'height': 1664}
+        # MCP automation configuration
+        self.mcp_config = {
+            'base_url': 'https://www1.royalbank.com/cgi-bin/rbaccess/rbunxcgi?F22=4WN600S&7ASERVER=N601LD&LANGUAGE=ENGLISH&7ASCRIPT=/WebUI/Holdings/HoldingsHome#/currency',
+            'home_url': 'https://www1.royalbank.com/sgw3/secureapp/N600/ReactUI/?LANGUAGE=ENGLISH#/Home',
+            'export_button_ref': 's2e232'
         }
         
-        self.export_formats = ['csv', 'pdf', 'excel']
+        # Data directories
+        self.data_input_dir = Path(__file__).parent.parent / 'data' / 'input' / 'downloaded_files'
+        self.data_output_dir = Path(__file__).parent.parent / 'data' / 'output'
+        
+        # Ensure directories exist
+        self.data_input_dir.mkdir(parents=True, exist_ok=True)
+        self.data_output_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Benefits configuration (optional)
+        self.benefits_username = os.getenv('BENEFITS_USERNAME')
+        self.benefits_password = os.getenv('BENEFITS_PASSWORD')
         
     def validate(self):
         """Validate that required configuration is present."""
-        if not self.username or not self.password:
-            raise ValueError("RBC_USERNAME and RBC_PASSWORD must be set in environment variables")
-        
+        # MCP automation doesn't require credentials in config
+        # Benefits are optional
         return True
 
 config = Config()
