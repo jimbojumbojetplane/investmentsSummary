@@ -242,22 +242,22 @@ def create_quarterly_dividend_schedule(df):
     # Title with total quarterly dividend amount
     st.subheader(f"📅 Upcoming Quarterly Dividends: ${total_quarterly:,.2f}")
     
-    # Top dividend contributors table
-    st.write("**Top Dividend Contributors:**")
-    top_dividends = quarterly_summary.nlargest(10, 'Total Quarterly Dividend').copy()
+    # All dividend contributors table
+    st.write("**All Dividend Contributors:**")
+    all_dividends = quarterly_summary.sort_values('Total Quarterly Dividend', ascending=False).copy()
     
     # Add expected payment date (assuming quarterly payments)
-    top_dividends['Expected Payment'] = "Quarterly"
+    all_dividends['Expected Payment'] = "Quarterly"
     
     # Format the quarterly amount
-    top_dividends['Quarterly Amount'] = top_dividends['Total Quarterly Dividend'].apply(
+    all_dividends['Quarterly Amount'] = all_dividends['Total Quarterly Dividend'].apply(
         lambda x: f"${x:,.2f}"
     )
     
     # Display the table with requested columns
     display_columns = ['Symbol', 'Description', 'Quarterly Amount', 'Expected Payment']
     st.dataframe(
-        top_dividends[display_columns], 
+        all_dividends[display_columns], 
         use_container_width=True, 
         hide_index=True
     )
