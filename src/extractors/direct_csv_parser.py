@@ -7,6 +7,7 @@ import logging
 from io import StringIO
 from typing import List, Dict, Any, Optional
 from pathlib import Path
+import pandas as pd
 
 # Configure logging
 PROJECT_ROOT = Path(__file__).parent.parent.parent
@@ -345,6 +346,29 @@ def process_csv_files():
             logger.info(f"Successfully processed {filename}: {len(parsed_data)} entries")
         else:
             logger.warning(f"No data extracted from {filename}")
+    
+    # Add ETF/ETN classifications
+    try:
+        from ..etf_classifier import add_etf_classifications
+        
+        # Convert to DataFrame for classification
+        holdings_data = [item['data'] for item in combined_data if item.get('type') == 'current_holdings']
+        if holdings_data:
+            df = pd.DataFrame(holdings_data)
+            df = add_etf_classifications(df)
+            
+            # Update the combined_data with classifications
+            for i, item in enumerate(combined_data):
+                if item.get('type') == 'current_holdings':
+                    symbol = item['data'].get('Symbol', '')
+                    if symbol in df['Symbol'].values:
+                        etf_row = df[df['Symbol'] == symbol].iloc[0]
+                        item['data']['ETF_Region'] = etf_row['ETF_Region']
+                        item['data']['ETF_Type'] = etf_row['ETF_Type']
+            
+            logger.info("ETF/ETN classifications added successfully")
+    except Exception as e:
+        logger.warning(f"Failed to add ETF classifications: {e}")
     
     # Save combined JSON file using the current date
     final_filename = f"holdings_combined_{datetime.datetime.now().strftime('%d%m%Y')}.json"

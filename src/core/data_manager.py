@@ -175,7 +175,9 @@ class DataManager:
             'Unrealized Gain/Loss $': 'Unrealized Gain/Loss',
             'Unrealized Gain/Loss %': 'Unrealized %',
             'Product': 'Asset Type',
-            'Name': 'Description'
+            'Name': 'Description',
+            'ETF_Region': 'ETF_Region',
+            'ETF_Type': 'ETF_Type'
         }
         
         # Rename columns
