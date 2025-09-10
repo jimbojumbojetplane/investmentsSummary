@@ -208,8 +208,7 @@ def create_usd_cad_breakdown(dm):
     st.dataframe(breakdown_df, use_container_width=True, hide_index=True)
 
 def create_quarterly_dividend_schedule(df):
-    """Create quarterly dividend schedule for next 4 quarters."""
-    st.subheader("📅 Quarterly Dividend Schedule (Q4 2025 - Q3 2026)")
+    """Create quarterly dividend schedule with upcoming dividends and top contributors."""
     
     if df is None or df.empty:
         st.warning("No dividend data available")
@@ -237,34 +236,31 @@ def create_quarterly_dividend_schedule(df):
         'Quantity': 'sum'
     }).reset_index()
     
-    # Calculate totals for each quarter
+    # Calculate total quarterly dividend
     total_quarterly = quarterly_summary['Total Quarterly Dividend'].sum()
     
-    # Create quarterly schedule
-    quarters = ['Q4 2025', 'Q1 2026', 'Q2 2026', 'Q3 2026']
+    # Title with total quarterly dividend amount
+    st.subheader(f"📅 Upcoming Quarterly Dividends: ${total_quarterly:,.2f}")
     
-    col1, col2 = st.columns([1, 1])
+    # Top dividend contributors table
+    st.write("**Top Dividend Contributors:**")
+    top_dividends = quarterly_summary.nlargest(10, 'Total Quarterly Dividend').copy()
     
-    with col1:
-        st.write("**Estimated Quarterly Dividend Income:**")
-        for quarter in quarters:
-            st.metric(quarter, f"${total_quarterly:,.2f}")
+    # Add expected payment date (assuming quarterly payments)
+    top_dividends['Expected Payment'] = "Quarterly"
     
-    with col2:
-        st.write("**Top Dividend Contributors:**")
-        top_dividends = quarterly_summary.nlargest(5, 'Total Quarterly Dividend')[
-            ['Symbol', 'Description', 'Total Quarterly Dividend']
-        ].copy()
-        top_dividends['Quarterly Amount'] = top_dividends['Total Quarterly Dividend'].apply(
-            lambda x: f"${x:,.2f}"
-        )
-        st.dataframe(
-            top_dividends[['Symbol', 'Description', 'Quarterly Amount']], 
-            use_container_width=True, 
-            hide_index=True
-        )
+    # Format the quarterly amount
+    top_dividends['Quarterly Amount'] = top_dividends['Total Quarterly Dividend'].apply(
+        lambda x: f"${x:,.2f}"
+    )
     
-    st.write(f"**Total Annual Dividend Income:** ${total_quarterly * 4:,.2f}")
+    # Display the table with requested columns
+    display_columns = ['Symbol', 'Description', 'Quarterly Amount', 'Expected Payment']
+    st.dataframe(
+        top_dividends[display_columns], 
+        use_container_width=True, 
+        hide_index=True
+    )
 
 def create_account_summary_table(df, dm):
     """Create detailed account summary table."""
@@ -361,11 +357,11 @@ def main():
     st.subheader("📈 Portfolio Visualizations")
     create_portfolio_charts(df, dm)
     
-    # Quarterly dividend schedule
-    create_quarterly_dividend_schedule(df)
-    
     # Account summary table
     create_account_summary_table(df, dm)
+    
+    # Quarterly dividend schedule
+    create_quarterly_dividend_schedule(df)
     
     # Sidebar filters
     st.sidebar.header("Filters")
