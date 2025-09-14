@@ -137,6 +137,15 @@ def parse_rbc_csv(file_path: str) -> List[Dict[str, Any]]:
                             total_value = clean_string(row[total_col])
                         
                         currency = clean_string(row[0])
+                        # Convert USD totals to CAD for financial summary
+                        total_cad = total_value
+                        if currency == "USD" and total_value:
+                            # Store exchange rate first if not already stored
+                            if "USD" not in exchange_rates:
+                                exchange_rates["USD"] = safe_float(exchange_rate)
+                            usd_rate = exchange_rates["USD"]
+                            total_cad = str(safe_float(total_value) * usd_rate)
+                        
                         financial_data = {
                             "type": "financial_summary",
                             "data": {
@@ -145,10 +154,47 @@ def parse_rbc_csv(file_path: str) -> List[Dict[str, Any]]:
                                 "Cash": clean_string(row[1]) if len(row) > 1 else "",
                                 "Investments": clean_string(row[2]) if len(row) > 2 else "",
                                 "Total": total_value,
+                                "Total (CAD)": total_cad,  # Converted to CAD
                                 "Exchange Rate to CAD": exchange_rate
                             }
                         }
                         results.append(financial_data)
+                        
+                        # Create individual cash holding if cash amount > 0
+                        cash_amount = safe_float(clean_string(row[1])) if len(row) > 1 else 0.0
+                        if cash_amount > 0:
+                            # Convert USD cash to CAD if needed
+                            if currency == "USD":
+                                # Store exchange rate first if not already stored
+                                if "USD" not in exchange_rates:
+                                    exchange_rates["USD"] = safe_float(exchange_rate)
+                                usd_rate = exchange_rates["USD"]
+                                cash_amount = cash_amount * usd_rate
+                                currency = "CAD"
+                            
+                            cash_holding = {
+                                "type": "current_holdings",
+                                "data": {
+                                    "Account #": account_number,
+                                    "Product": "Cash",
+                                    "Symbol": "CASH",
+                                    "Description": f"Cash - {currency}",
+                                    "Quantity": 1,
+                                    "Last Price": cash_amount,
+                                    "Currency": currency,
+                                    "Change $": 0.0,
+                                    "Change %": "0%",
+                                    "Total Book Cost": cash_amount,
+                                    "Total Market Value": cash_amount,
+                                    "Unrealized Gain/Loss $": 0.0,
+                                    "Unrealized Gain/Loss %": "0%",
+                                    "Average Cost": cash_amount,
+                                    "Annual Dividend Amount $": 0.0,
+                                    "Source": "RBC Holdings"
+                                }
+                            }
+                            results.append(cash_holding)
+                            logger.info(f"Added cash holding: {currency} ${cash_amount}")
                         
                         # Store exchange rate for USD conversion later
                         if currency == "USD":

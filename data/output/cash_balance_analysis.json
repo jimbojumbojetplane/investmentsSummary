@@ -1,0 +1,81 @@
+{
+  "analysis_date": "2025-09-12",
+  "original_csv_files": [
+    "Holdings 26674346 September 10, 2025.csv",
+    "Holdings 49813791 September 10, 2025.csv",
+    "Holdings 68000157 September 10, 2025.csv",
+    "Holdings 69539728 September 10, 2025.csv",
+    "Holdings 69549834 September 10, 2025.csv"
+  ],
+  "cash_balances_found": [
+    {
+      "account": "26674346 - TFSA",
+      "currency": "CAD",
+      "cash_value": 2606.82,
+      "investments_value": 99499.4,
+      "total_value": 102106.22,
+      "line_number": 11
+    },
+    {
+      "account": "49813791 - RRSP",
+      "currency": "CAD",
+      "cash_value": 105657.24,
+      "investments_value": 530031.7,
+      "total_value": 635688.94,
+      "line_number": 11
+    },
+    {
+      "account": "49813791 - RRSP",
+      "currency": "USD",
+      "cash_value": 3736.75,
+      "investments_value": 919262.08,
+      "total_value": 922998.83,
+      "line_number": 12
+    },
+    {
+      "account": "68000157 - Investment",
+      "currency": "CAD",
+      "cash_value": 0.77,
+      "investments_value": 0.0,
+      "total_value": 0.77,
+      "line_number": 11
+    },
+    {
+      "account": "68000157 - Investment",
+      "currency": "USD",
+      "cash_value": 621.6,
+      "investments_value": 25940.25,
+      "total_value": 26561.85,
+      "line_number": 12
+    },
+    {
+      "account": "69539728 - RRSP",
+      "currency": "CAD",
+      "cash_value": 32439.03,
+      "investments_value": 61311.2,
+      "total_value": 93750.23,
+      "line_number": 11
+    },
+    {
+      "account": "69539728 - RRSP",
+      "currency": "USD",
+      "cash_value": 98722.65,
+      "investments_value": 193446.85,
+      "total_value": 292169.5,
+      "line_number": 12
+    },
+    {
+      "account": "69549834 - LIRA",
+      "currency": "CAD",
+      "cash_value": 169.03,
+      "investments_value": 26884.0,
+      "total_value": 27053.03,
+      "line_number": 11
+    }
+  ],
+  "totals": {
+    "cad_total": 140872.89,
+    "usd_total": 103081.0,
+    "total_cad_equivalent": 283676.15335000004
+  }
+}

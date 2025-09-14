@@ -23,9 +23,12 @@ class DataManager:
         json_files = []
         for directory in self.data_dirs:
             if directory.exists():
-                # Look for holdings files
-                holdings_pattern = directory / "holdings_combined_*.json"
-                json_files.extend(directory.glob("holdings_combined_*.json"))
+                # Look for comprehensive holdings files first, then fallback to combined holdings
+                comprehensive_files = list(directory.glob("comprehensive_holdings_*.json"))
+                if comprehensive_files:
+                    json_files.extend(comprehensive_files)
+                else:
+                    json_files.extend(directory.glob("holdings_combined_*.json"))
         return [str(f) for f in json_files]
     
     def extract_date_from_filename(self, filename: str) -> datetime:
@@ -88,13 +91,32 @@ class DataManager:
                 self.logger.warning(f"No holdings data found in {file_path}")
                 return None
             
-            df = pd.DataFrame(holdings_data)
+            # Debug: Check holdings_data structure
+            self.logger.info(f"Found {len(holdings_data)} holdings entries")
+            if holdings_data:
+                self.logger.info(f"First entry keys: {list(holdings_data[0].keys()) if holdings_data[0] else 'Empty entry'}")
+            
+            try:
+                df = pd.DataFrame(holdings_data)
+            except Exception as e:
+                self.logger.error(f"Error creating DataFrame: {e}")
+                self.logger.error(f"Holdings data sample: {holdings_data[:2] if len(holdings_data) > 0 else 'No data'}")
+                return None
             
             # Convert USD holdings to CAD using exchange rates
             if not df.empty:
-                df = self.convert_usd_to_cad(df, exchange_rates)
+                try:
+                    df = self.convert_usd_to_cad(df, exchange_rates)
+                except Exception as e:
+                    self.logger.warning(f"Error in USD to CAD conversion: {e}")
             
-            return self.process_dataframe(df)
+            try:
+                processed_df = self.process_dataframe(df)
+                return processed_df
+            except Exception as e:
+                self.logger.error(f"Error in process_dataframe: {e}")
+                self.logger.error(f"DataFrame info: shape={df.shape}, columns={list(df.columns)}")
+                return None
         
         except Exception as e:
             self.logger.error(f"Error loading data from {file_path}: {str(e)}")
@@ -168,20 +190,46 @@ class DataManager:
             return df
         
         # Map column names to standard format
-        column_mapping = {
-            'Account #': 'Account',
-            'Total Market Value': 'Market Value',
-            'Total Book Cost': 'Book Value',
-            'Unrealized Gain/Loss $': 'Unrealized Gain/Loss',
-            'Unrealized Gain/Loss %': 'Unrealized %',
-            'Product': 'Asset Type',
-            'Name': 'Description',
-            'ETF_Region': 'ETF_Region',
-            'ETF_Type': 'ETF_Type'
-        }
+        # First, drop any duplicate columns that might exist
+        df = df.loc[:, ~df.columns.duplicated()]
         
-        # Rename columns
-        df = df.rename(columns=column_mapping)
+        # Create column mapping
+        column_mapping = {}
+        
+        # Only rename if the target column doesn't already exist or is empty
+        if 'Account #' in df.columns and 'Account' not in df.columns:
+            column_mapping['Account #'] = 'Account'
+        if 'Total Market Value' in df.columns:
+            # Check if Market Value column exists and has data
+            if 'Market Value' in df.columns:
+                # Check if Market Value has any non-zero values
+                market_value_sum = df['Market Value'].sum()
+                total_market_value_sum = df['Total Market Value'].sum()
+                
+                if market_value_sum > 0 and total_market_value_sum > 0:
+                    # Both columns have data - keep both but rename Total Market Value
+                    column_mapping['Total Market Value'] = 'Total_Market_Value'
+                elif total_market_value_sum > 0:
+                    # Only Total Market Value has data - rename it to Total_Market_Value for RBC holdings
+                    column_mapping['Total Market Value'] = 'Total_Market_Value'
+                # If neither has data, don't rename
+            else:
+                # No Market Value column, rename Total Market Value to Total_Market_Value
+                column_mapping['Total Market Value'] = 'Total_Market_Value'
+        if 'Total Book Cost' in df.columns and 'Book Value' not in df.columns:
+            column_mapping['Total Book Cost'] = 'Book Value'
+        if 'Unrealized Gain/Loss $' in df.columns and 'Unrealized Gain/Loss' not in df.columns:
+            column_mapping['Unrealized Gain/Loss $'] = 'Unrealized Gain/Loss'
+        if 'Unrealized Gain/Loss %' in df.columns and 'Unrealized %' not in df.columns:
+            column_mapping['Unrealized Gain/Loss %'] = 'Unrealized %'
+        if 'Product' in df.columns and 'Asset Type' not in df.columns:
+            column_mapping['Product'] = 'Asset Type'
+        if 'Name' in df.columns and 'Description' not in df.columns:
+            column_mapping['Name'] = 'Description'
+        
+        # Rename columns only if there are mappings
+        if column_mapping:
+            df = df.rename(columns=column_mapping)
         
         # Convert numeric columns
         numeric_columns = ['Quantity', 'Book Value', 'Market Value', 'Unrealized Gain/Loss', 'Last Price']
@@ -193,7 +241,11 @@ class DataManager:
         percentage_columns = ['Unrealized %', 'Change %']
         for col in percentage_columns:
             if col in df.columns:
-                df[col] = df[col].astype(str).str.rstrip('%').astype(float, errors='ignore')
+                try:
+                    df[col] = df[col].astype(str).str.rstrip('%').astype(float, errors='ignore')
+                except Exception as e:
+                    self.logger.warning(f"Error converting percentage column {col}: {e}")
+                    df[col] = pd.to_numeric(df[col], errors='ignore')
         
         # Fill NaN values
         if 'Market Value' in df.columns:
@@ -234,6 +286,17 @@ class DataManager:
     def get_total_portfolio_value_from_summaries(self) -> float:
         """Get the correct total portfolio value from financial summaries (includes cash)."""
         if not hasattr(self, '_raw_data') or not self._raw_data:
+            # Try to load the data if not already loaded
+            latest_file = self.get_latest_data_file()
+            if latest_file:
+                try:
+                    with open(latest_file, 'r') as f:
+                        self._raw_data = json.load(f)
+                except Exception as e:
+                    self.logger.error(f"Error loading data for portfolio value: {e}")
+                    return 0.0
+        
+        if not self._raw_data:
             return 0.0
         
         total_value = 0.0

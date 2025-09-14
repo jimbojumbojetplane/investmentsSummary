@@ -1,0 +1,52 @@
+[
+  {
+    "Symbol": "CMR",
+    "Name": "ISHARES PREMIUM MONEY MARKET ETF",
+    "Sector": "Unknown",
+    "Issuer_Region": "Unknown",
+    "Industry": "Unknown",
+    "Market_Value": 25025.0,
+    "Enrichment_Source": "yahoo_finance",
+    "Currency": "Unknown"
+  },
+  {
+    "Symbol": "HYG",
+    "Name": "ISHARES IBOXX $ HIGH YIELD CORPORATE BOND ETF",
+    "Sector": "Unknown",
+    "Issuer_Region": "Unknown",
+    "Industry": "Unknown",
+    "Market_Value": 44728.8,
+    "Enrichment_Source": "yahoo_finance",
+    "Currency": "USD"
+  },
+  {
+    "Symbol": "ICSH",
+    "Name": "ISHARES TRUST ISHARES ULTRA SHORT DURATION BOND ACTIVE ETF",
+    "Sector": "Unknown",
+    "Issuer_Region": "Unknown",
+    "Industry": "Unknown",
+    "Market_Value": 105241.576125,
+    "Enrichment_Source": "yahoo_finance",
+    "Currency": "USD"
+  },
+  {
+    "Symbol": "IEV",
+    "Name": "ISHARES EUROPE ETF",
+    "Sector": "Unknown",
+    "Issuer_Region": "Unknown",
+    "Industry": "Unknown",
+    "Market_Value": 35769.737,
+    "Enrichment_Source": "yahoo_finance",
+    "Currency": "USD"
+  },
+  {
+    "Symbol": "CMR",
+    "Name": "ISHARES PREMIUM MONEY MARKET ETF",
+    "Sector": "Unknown",
+    "Issuer_Region": "Unknown",
+    "Industry": "Unknown",
+    "Market_Value": 99499.4,
+    "Enrichment_Source": "yahoo_finance",
+    "Currency": "Unknown"
+  }
+]

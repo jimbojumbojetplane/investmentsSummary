@@ -1,0 +1,38 @@
+[
+  {
+    "Symbol": "PDD",
+    "Name": "PDD HOLDINGS INC AMERICAN DEPOSITARY SHARES",
+    "Sector": "Unknown",
+    "Issuer_Region": "China",
+    "Industry": "",
+    "Market_Value": 52391.166300000004,
+    "Currency": "CAD",
+    "Enrichment_Source": "manual_mapping",
+    "LLM_Applied": false,
+    "Classification_Source": "manual_mapping"
+  },
+  {
+    "Symbol": "HISU.U",
+    "Name": "US HIGH INT SVGS ACCOUNT FD UNHEDGED ETF UNITS USD",
+    "Sector": "Unknown",
+    "Issuer_Region": "Us",
+    "Industry": "Unknown",
+    "Market_Value": 97129.65920000001,
+    "Currency": "Unknown",
+    "Enrichment_Source": "yahoo_finance",
+    "LLM_Applied": false,
+    "Classification_Source": "yahoo_finance"
+  },
+  {
+    "Symbol": "XEH",
+    "Name": "ISHARES MSCI EUROPE IMI INDEX ETF CAD-HEDGED UNIT",
+    "Sector": "Unknown",
+    "Issuer_Region": "Europe",
+    "Industry": "Unknown",
+    "Market_Value": 61311.2,
+    "Currency": "Unknown",
+    "Enrichment_Source": "yahoo_finance",
+    "LLM_Applied": false,
+    "Classification_Source": "yahoo_finance"
+  }
+]

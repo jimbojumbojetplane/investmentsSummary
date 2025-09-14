@@ -1,13 +1,6 @@
-# Core dashboard dependencies
 streamlit>=1.28.0
-pandas>=2.0.0
 plotly>=5.15.0
-
-# Benefits automation dependencies (optional - only needed if running benefits extractor locally)
-selenium>=4.25.0
-webdriver-manager>=4.0.2
-python-dotenv>=1.0.0
-tenacity>=8.2.3
-
-# MCP automation dependencies
-# No additional dependencies required - uses Cursor agent and MCP tools
+pandas>=2.0.0
+numpy>=1.24.0
+requests>=2.31.0
+yfinance>=0.2.18

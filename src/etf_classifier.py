@@ -47,14 +47,42 @@ class ETFClassifier:
                 r'INDEX', r'S&P', r'DOW', r'NASDAQ', r'RUSSELL', r'MSCI.*INDEX',
                 r'TOTAL.*MARKET', r'MARKET.*CAP'
             ],
-            'Sector/Theme': [
-                r'SEMICONDUCTOR', r'TECHNOLOGY', r'HEALTHCARE', r'ENERGY', r'FINANCIAL',
-                r'CONSUMER', r'INDUSTRIAL', r'MATERIALS', r'UTILITIES', r'COMMUNICATION',
-                r'REAL.*ESTATE', r'BIOTECH', r'CLEAN.*ENERGY', r'SOLAR', r'WIND',
-                r'CYBERSECURITY', r'ARTIFICIAL.*INTELLIGENCE', r'BLOCKCHAIN'
+            'Utilities': [
+                r'UTILITIES', r'UTILITY', r'ELECTRIC', r'POWER', r'ENERGY.*UTILITY'
             ],
-            'REIT': [
-                r'REIT', r'REAL.*ESTATE.*INVESTMENT', r'REALTY', r'PROPERTY'
+            'Semiconductors': [
+                r'SEMICONDUCTOR', r'CHIP', r'MICROCHIP', r'PROCESSOR'
+            ],
+            'Technology': [
+                r'TECHNOLOGY', r'TECH', r'SOFTWARE', r'INTERNET', r'CYBERSECURITY',
+                r'ARTIFICIAL.*INTELLIGENCE', r'AI', r'BLOCKCHAIN', r'DIGITAL'
+            ],
+            'Healthcare': [
+                r'HEALTHCARE', r'HEALTH', r'BIOTECH', r'PHARMACEUTICAL', r'MEDICAL'
+            ],
+            'Energy': [
+                r'ENERGY', r'OIL', r'GAS', r'CRUDE', r'NATURAL.*GAS', r'PETROLEUM'
+            ],
+            'Financial': [
+                r'FINANCIAL', r'BANK', r'INSURANCE', r'FINANCE', r'CREDIT'
+            ],
+            'Consumer': [
+                r'CONSUMER', r'RETAIL', r'DISCRETIONARY', r'STAPLES'
+            ],
+            'Industrial': [
+                r'INDUSTRIAL', r'MANUFACTURING', r'AEROSPACE', r'DEFENSE'
+            ],
+            'Materials': [
+                r'MATERIALS', r'MINING', r'METALS', r'CHEMICALS'
+            ],
+            'Communication': [
+                r'COMMUNICATION', r'TELECOM', r'MEDIA', r'ENTERTAINMENT'
+            ],
+            'Real Estate': [
+                r'REAL.*ESTATE', r'REIT', r'REALTY', r'PROPERTY'
+            ],
+            'Clean Energy': [
+                r'CLEAN.*ENERGY', r'RENEWABLE', r'SOLAR', r'WIND', r'GREEN.*ENERGY'
             ],
             'Commodity': [
                 r'GOLD', r'SILVER', r'OIL', r'ENERGY', r'COMMODITY', r'PRECIOUS.*METAL',
@@ -75,8 +103,8 @@ class ETFClassifier:
             
             # US ETFs
             'SCHD': ('US', 'Dividend Equity'),
-            'SMH': ('US', 'Sector/Theme'),
-            'TAN': ('US', 'Sector/Theme'),
+            'SMH': ('US', 'Semiconductors'),
+            'TAN': ('US', 'Clean Energy'),
             'HYG': ('US', 'Bond/Fixed Income'),
             'ICSH': ('US', 'Bond/Fixed Income'),
             'HISU.U': ('US', 'Bond/Fixed Income'),

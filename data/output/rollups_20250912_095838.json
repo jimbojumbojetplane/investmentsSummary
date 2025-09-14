@@ -1,0 +1,547 @@
+{
+  "generated_at": "2025-09-12T09:58:38.735181",
+  "pipeline_version": "v1.0",
+  "by_account": [
+    {
+      "Account_Id": "49813791",
+      "Currency_Base": "CAD",
+      "FX_To_CAD": 1.0,
+      "Cash_CAD": 110833.9466125,
+      "Investments_CAD": 1803531.422528,
+      "Total_CAD": 1914365.3691405002,
+      "Holdings_Sum_CAD": 1914365.3691405,
+      "Delta_vs_Summary_CAD": 2.3283064365386963e-10,
+      "weights": {
+        "Cash & Equivalents": 0.057895921227545784,
+        "Common Equity": 0.6199266094830302,
+        "ETF \u2013 Dividend Equity": 0.016829493742077536,
+        "ETF \u2013 Cash / Ultra-Short": 0.1396975935921104,
+        "ETF \u2013 Bond": 0.02336481881725747,
+        "ETF \u2013 REIT": 0.03565150158908404,
+        "REIT \u2013 Equity": 0.020839804482000117,
+        "ETF \u2013 Regional Equity": 0.018684906014602466,
+        "ETF \u2013 Thematic Equity": 0.0671093510522918
+      }
+    },
+    {
+      "Account_Id": "26674346",
+      "Currency_Base": "CAD",
+      "FX_To_CAD": 1.0,
+      "Cash_CAD": 2606.82,
+      "Investments_CAD": 99499.4,
+      "Total_CAD": 102106.22,
+      "Holdings_Sum_CAD": 102106.22,
+      "Delta_vs_Summary_CAD": 0.0,
+      "weights": {
+        "Cash & Equivalents": 0.025530472090730616,
+        "ETF \u2013 Cash / Ultra-Short": 0.9744695279092693
+      }
+    },
+    {
+      "Account_Id": "69539728",
+      "Currency_Base": "CAD",
+      "FX_To_CAD": 1.0,
+      "Cash_CAD": 169204.4531775,
+      "Investments_CAD": 329302.7936475,
+      "Total_CAD": 498507.246825,
+      "Holdings_Sum_CAD": 498507.24682500004,
+      "Delta_vs_Summary_CAD": -5.820766091346741e-11,
+      "weights": {
+        "Cash & Equivalents": 0.33942225364859924,
+        "ETF \u2013 Regional Equity": 0.12298958619055578,
+        "Common Equity": 0.29320318927843103,
+        "REIT \u2013 Equity": 0.244384970882414
+      }
+    },
+    {
+      "Account_Id": "69549834",
+      "Currency_Base": "CAD",
+      "FX_To_CAD": 1.0,
+      "Cash_CAD": 169.03,
+      "Investments_CAD": 26884.0,
+      "Total_CAD": 27053.03,
+      "Holdings_Sum_CAD": 27053.03,
+      "Delta_vs_Summary_CAD": 0.0,
+      "weights": {
+        "Cash & Equivalents": 0.006248098641815723,
+        "ETF \u2013 Dividend Equity": 0.9937519013581844
+      }
+    },
+    {
+      "Account_Id": "68000157",
+      "Currency_Base": "CAD",
+      "FX_To_CAD": 1.0,
+      "Cash_CAD": 861.9035600000001,
+      "Investments_CAD": 35936.3253375,
+      "Total_CAD": 36798.2288975,
+      "Holdings_Sum_CAD": 36798.2288975,
+      "Delta_vs_Summary_CAD": 0.0,
+      "weights": {
+        "Cash & Equivalents": 0.02342241966048959,
+        "ETF \u2013 Dividend Equity": 0.9765775803395105
+      }
+    },
+    {
+      "Account_Id": "DC_PENSION",
+      "Currency_Base": "CAD",
+      "FX_To_CAD": 1.0,
+      "Cash_CAD": 0.0,
+      "Investments_CAD": 670081.44,
+      "Total_CAD": 670081.44,
+      "Holdings_Sum_CAD": 0,
+      "Delta_vs_Summary_CAD": 670081.44,
+      "weights": {}
+    },
+    {
+      "Account_Id": "RRSP_BELL",
+      "Currency_Base": "CAD",
+      "FX_To_CAD": 1.0,
+      "Cash_CAD": 0.0,
+      "Investments_CAD": 414712.75,
+      "Total_CAD": 414712.75,
+      "Holdings_Sum_CAD": 0,
+      "Delta_vs_Summary_CAD": 414712.75,
+      "weights": {}
+    }
+  ],
+  "by_asset_type": [
+    {
+      "Asset_Type": "Cash & Equivalents",
+      "Total_CAD": 283676.15335000004,
+      "Count": 8,
+      "Percentage": 11.000187795042406
+    },
+    {
+      "Asset_Type": "Common Equity",
+      "Total_CAD": 1332929.9472505003,
+      "Count": 33,
+      "Percentage": 51.68738917331864
+    },
+    {
+      "Asset_Type": "ETF \u2013 Dividend Equity",
+      "Total_CAD": 95038.12533750001,
+      "Count": 3,
+      "Percentage": 3.6853193828788844
+    },
+    {
+      "Asset_Type": "ETF \u2013 Cash / Ultra-Short",
+      "Total_CAD": 366931.63532500004,
+      "Count": 5,
+      "Percentage": 14.228608393237069
+    },
+    {
+      "Asset_Type": "ETF \u2013 Bond",
+      "Total_CAD": 44728.8,
+      "Count": 1,
+      "Percentage": 1.7344609126866979
+    },
+    {
+      "Asset_Type": "ETF \u2013 REIT",
+      "Total_CAD": 68250.0,
+      "Count": 1,
+      "Percentage": 2.646548919060362
+    },
+    {
+      "Asset_Type": "REIT \u2013 Equity",
+      "Total_CAD": 161722.679,
+      "Count": 5,
+      "Percentage": 6.271164561098843
+    },
+    {
+      "Asset_Type": "ETF \u2013 Regional Equity",
+      "Total_CAD": 97080.937,
+      "Count": 2,
+      "Percentage": 3.7645340495050132
+    },
+    {
+      "Asset_Type": "ETF \u2013 Thematic Equity",
+      "Total_CAD": 128471.81760000001,
+      "Count": 2,
+      "Percentage": 4.981786813172162
+    }
+  ],
+  "by_sector": [
+    {
+      "Sector": "Cash Equivalent",
+      "Total_CAD": 650607.7886750001,
+      "Count": 13,
+      "Percentage": 25.228796188279475
+    },
+    {
+      "Sector": "Unknown",
+      "Total_CAD": 1033402.8049605002,
+      "Count": 25,
+      "Percentage": 40.07254324428071
+    },
+    {
+      "Sector": "Utilities (Clean Energy)",
+      "Total_CAD": 115006.70925,
+      "Count": 2,
+      "Percentage": 4.459646623447281
+    },
+    {
+      "Sector": "Energy (Midstream)",
+      "Total_CAD": 134857.85210000002,
+      "Count": 4,
+      "Percentage": 5.229419819810363
+    },
+    {
+      "Sector": "Multi-Sector Equity",
+      "Total_CAD": 192119.06233749999,
+      "Count": 5,
+      "Percentage": 7.449853432383896
+    },
+    {
+      "Sector": "Fixed Income (High Yield)",
+      "Total_CAD": 44728.8,
+      "Count": 1,
+      "Percentage": 1.7344609126866979
+    },
+    {
+      "Sector": "Real Estate",
+      "Total_CAD": 229972.679,
+      "Count": 6,
+      "Percentage": 8.917713480159204
+    },
+    {
+      "Sector": "Financials (Alternative Asset Manager)",
+      "Total_CAD": 107755.84784,
+      "Count": 2,
+      "Percentage": 4.178477987155822
+    },
+    {
+      "Sector": "Utilities",
+      "Total_CAD": 29121.44235,
+      "Count": 1,
+      "Percentage": 1.129250135866244
+    },
+    {
+      "Sector": "Information Technology",
+      "Total_CAD": 41257.10835,
+      "Count": 1,
+      "Percentage": 1.5998381759303848
+    }
+  ],
+  "by_region": [
+    {
+      "Issuer_Region": "Unknown",
+      "Total_CAD": 927238.2904850002,
+      "Count": 28,
+      "Percentage": 35.95577282629239
+    },
+    {
+      "Issuer_Region": "Canada",
+      "Total_CAD": 409499.92134,
+      "Count": 10,
+      "Percentage": 15.879290464141837
+    },
+    {
+      "Issuer_Region": "Global",
+      "Total_CAD": 164560.4,
+      "Count": 3,
+      "Percentage": 6.381203644544188
+    },
+    {
+      "Issuer_Region": "United States",
+      "Total_CAD": 781816.7356499999,
+      "Count": 13,
+      "Percentage": 30.316721415938584
+    },
+    {
+      "Issuer_Region": "China",
+      "Total_CAD": 123715.91105,
+      "Count": 2,
+      "Percentage": 4.797365723955244
+    },
+    {
+      "Issuer_Region": "France",
+      "Total_CAD": 40156.697138,
+      "Count": 1,
+      "Percentage": 1.5571672293568974
+    },
+    {
+      "Issuer_Region": "Taiwan",
+      "Total_CAD": 34761.2022,
+      "Count": 1,
+      "Percentage": 1.3479446462659148
+    },
+    {
+      "Issuer_Region": "Europe",
+      "Total_CAD": 97080.937,
+      "Count": 2,
+      "Percentage": 3.7645340495050132
+    }
+  ],
+  "exceptions": [
+    {
+      "Account_Id": "49813791",
+      "Symbol": "CASH",
+      "Reason": "Issuer_Region Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "CASH",
+      "Reason": "Issuer_Region Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "ARX",
+      "Reason": "Sector Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "BEPC",
+      "Reason": "Issuer_Region Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "CNQ",
+      "Reason": "Sector Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "CVE",
+      "Reason": "Sector Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "RCI.B",
+      "Reason": "Issuer_Region Unknown; Sector Unknown; Low Confidence (0.5)",
+      "Confidence": 0.5000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "T",
+      "Reason": "Issuer_Region Unknown; Sector Unknown; Low Confidence (0.5)",
+      "Confidence": 0.5000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "5565652",
+      "Reason": "Issuer_Region Unknown; Sector Unknown; Low Confidence (0.5)",
+      "Confidence": 0.5000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "NWH.UN",
+      "Reason": "Issuer_Region Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "PMZ.UN",
+      "Reason": "Issuer_Region Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "AAPL",
+      "Reason": "Sector Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "ADBE",
+      "Reason": "Sector Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "AMZN",
+      "Reason": "Sector Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "BABA",
+      "Reason": "Sector Unknown; Low Confidence (0.8)",
+      "Confidence": 0.8
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "CRM",
+      "Reason": "Sector Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "EPD",
+      "Reason": "Issuer_Region Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "ET",
+      "Reason": "Issuer_Region Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "GOOGL",
+      "Reason": "Sector Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "LULU",
+      "Reason": "Issuer_Region Unknown; Sector Unknown; Low Confidence (0.5)",
+      "Confidence": 0.5000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "MC",
+      "Reason": "Sector Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "MSFT",
+      "Reason": "Sector Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "NEE",
+      "Reason": "Issuer_Region Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "NKE",
+      "Reason": "Issuer_Region Unknown; Sector Unknown; Low Confidence (0.5)",
+      "Confidence": 0.5000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "PDD",
+      "Reason": "Sector Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "PFE",
+      "Reason": "Issuer_Region Unknown; Sector Unknown; Low Confidence (0.5)",
+      "Confidence": 0.5000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "SHOP",
+      "Reason": "Sector Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "TSM",
+      "Reason": "Sector Unknown; Low Confidence (0.8)",
+      "Confidence": 0.8
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "UPS",
+      "Reason": "Issuer_Region Unknown; Sector Unknown; Low Confidence (0.5)",
+      "Confidence": 0.5000000000000001
+    },
+    {
+      "Account_Id": "49813791",
+      "Symbol": "VZ",
+      "Reason": "Issuer_Region Unknown; Sector Unknown; Low Confidence (0.5)",
+      "Confidence": 0.5000000000000001
+    },
+    {
+      "Account_Id": "26674346",
+      "Symbol": "CASH",
+      "Reason": "Issuer_Region Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "69539728",
+      "Symbol": "CASH",
+      "Reason": "Issuer_Region Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "69539728",
+      "Symbol": "CASH",
+      "Reason": "Issuer_Region Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "69539728",
+      "Symbol": "ELV",
+      "Reason": "Issuer_Region Unknown; Sector Unknown; Low Confidence (0.5)",
+      "Confidence": 0.5000000000000001
+    },
+    {
+      "Account_Id": "69539728",
+      "Symbol": "KKR",
+      "Reason": "Issuer_Region Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "69539728",
+      "Symbol": "MRK",
+      "Reason": "Issuer_Region Unknown; Sector Unknown; Low Confidence (0.5)",
+      "Confidence": 0.5000000000000001
+    },
+    {
+      "Account_Id": "69539728",
+      "Symbol": "NFLX",
+      "Reason": "Sector Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "69539728",
+      "Symbol": "O",
+      "Reason": "Issuer_Region Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "69539728",
+      "Symbol": "REXR",
+      "Reason": "Issuer_Region Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "69539728",
+      "Symbol": "STAG",
+      "Reason": "Issuer_Region Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "69549834",
+      "Symbol": "CASH",
+      "Reason": "Issuer_Region Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "68000157",
+      "Symbol": "CASH",
+      "Reason": "Issuer_Region Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "68000157",
+      "Symbol": "CASH",
+      "Reason": "Issuer_Region Unknown; Low Confidence (0.7)",
+      "Confidence": 0.7000000000000001
+    },
+    {
+      "Account_Id": "DC_PENSION",
+      "Symbol": "DC_PENSION",
+      "Reason": "Issuer_Region Unknown; Sector Unknown; Low Confidence (0.5)",
+      "Confidence": 0.5000000000000001
+    },
+    {
+      "Account_Id": "RRSP_BELL",
+      "Symbol": "RRSP_BELL",
+      "Reason": "Issuer_Region Unknown; Sector Unknown; Low Confidence (0.5)",
+      "Confidence": 0.5000000000000001
+    }
+  ]
+}
