@@ -37,7 +37,12 @@ def deploy_to_github():
     shutil.copy2(latest_file, dest_file)
     print(f"✅ Copied data to: {dest_file}")
     
-    # 4. Create requirements.txt
+    # 4. Copy main dashboard file as app.py for Streamlit Cloud
+    if Path('app_final_portfolio_structure.py').exists():
+        shutil.copy2('app_final_portfolio_structure.py', 'app.py')
+        print("✅ Created app.py for Streamlit Cloud")
+    
+    # 5. Create requirements.txt
     requirements_content = """streamlit>=1.28.0
 plotly>=5.15.0
 pandas>=2.0.0
@@ -91,7 +96,7 @@ Interactive portfolio analysis dashboard for RBC holdings.
 pip install -r requirements.txt
 
 # Run local dashboard
-streamlit run app_final_portfolio_structure.py --server.port 8507
+streamlit run app.py --server.port 8507
 ```
 
 ## Data Pipeline

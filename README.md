@@ -11,7 +11,7 @@ Interactive portfolio analysis dashboard for RBC holdings.
 pip install -r requirements.txt
 
 # Run local dashboard
-streamlit run app_final_portfolio_structure.py --server.port 8507
+streamlit run app.py --server.port 8507
 ```
 
 ## Data Pipeline
